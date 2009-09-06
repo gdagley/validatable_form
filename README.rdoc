@@ -1,7 +1,21 @@
 = validatable_form
 
-Description goes here.
+I wanted to validatable models without needing to create a table for ActiveRecord or having to 
+override/hack ActiveRecord methods.  There may be other ways to do this, but this is what I came up with.
 
+Now I can do this:
+
+  class ContactForm < ValidatableForm
+    form_fields :name, :email
+    validates_presence_of :name
+    validates_presence_of :email
+  end
+
+  f = ContactForm.new(:name => "John Doe", :email => "jdoe@example.com")    
+  f.valid?
+
+All the validations come from the validatable[http://validatable.rubyforge.org] gem.
+  
 == Note on Patches/Pull Requests
  
 * Fork the project.
