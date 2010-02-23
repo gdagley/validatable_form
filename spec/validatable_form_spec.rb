@@ -25,6 +25,12 @@ describe ValidatableForm do
     f.name.should == "John Doe"
     f.email.should == "jdoe@example.com"
   end
+
+  it "should allow initializing with nil attributes" do
+    f = ContactForm.new(nil)    
+    f.name.should be_nil
+    f.email.should be_nil
+  end
   
   it "should always be a new record" do
     ContactForm.new.should be_new_record
